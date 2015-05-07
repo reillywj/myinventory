@@ -1,0 +1,49 @@
+.row
+  .col-sm-3.col-md-2.sidebar
+    %ul.nav.nav-sidebar
+      %li.active
+        <a href="#">Overview <span class="sr-only">(current)</span></a>
+      %li 
+        =link_to "Reports"
+      %li 
+        =link_to "Analytics"
+      %li 
+        =link_to "Export"
+    %ul.nav.nav-sidebar
+      %li
+        <a href="#">Overview <span class="sr-only">(current)</span></a>
+      %li 
+        =link_to "Item one"
+      %li 
+        =link_to "Item one"
+      %li 
+        =link_to "Item one"
+    %ul.nav.nav-sidebar
+      %li
+        <a href="#">Overview <span class="sr-only">(current)</span></a>
+      %li 
+        =link_to "Item two"
+      %li 
+        =link_to "Item two"
+      %li 
+        =link_to "Item two"
+  .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+    %h1.page-header Inventory Item Page
+    .row.placeholders
+      .col-xs-12.col-md-4.placeholder
+        %p.item-image Item Image Here
+      .col-xs-12.col-md-8
+        %table.table
+          %thead
+            %th Item
+            %th Categories
+            %th Location
+            %th Value
+          %tbody
+            %tr
+              %td Table Saw
+              %td Tool
+              %td Garage
+              %td $100
+        %br
+        %button.btn.btn-primary.item-button-update Update
