@@ -1,95 +1,65 @@
 .row
   .col-sm-3.col-md-2.sidebar
-    %ul.nav.nav-sidebar
-      %li.active
-        <a href="#">Overview <span class="sr-only">(current)</span></a>
-      %li 
-        =link_to "Reports"
-      %li 
-        =link_to "Analytics"
-      %li 
-        =link_to "Export"
-    %ul.nav.nav-sidebar
-      %li
-        <a href="#">Overview <span class="sr-only">(current)</span></a>
-      %li 
-        =link_to "Item one"
-      %li 
-        =link_to "Item one"
-      %li 
-        =link_to "Item one"
-    %ul.nav.nav-sidebar
-      %li
-        <a href="#">Overview <span class="sr-only">(current)</span></a>
-      %li 
-        =link_to "Item two"
-      %li 
-        =link_to "Item two"
-      %li 
-        =link_to "Item two"
+    =render "shared/side_nav"
   .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
     %h1.page-header Dashboard
     .row.placeholders
-      .col-xs-6.col-sm-3.placeholder
-        %p Some image here
-        %h4 Label
-        %span.text-muted Something Here
-      .col-xs-6.col-sm-3.placeholder
-        %p Some image here
-        %h4 Label
-        %span.text-muted Something Here
-      .col-xs-6.col-sm-3.placeholder
-        %p Some image here
-        %h4 Label
-        %span.text-muted Something Here
-      .col-xs-6.col-sm-3.placeholder
-        %p Some image here
-        %h4 Label
-        %span.text-muted Something Here
-    %h2.sub-header Section Title
+      .col-xs-6.col-sm-4.placeholder
+        %img(src="http://placehold.it/140x100")
+        %h4 Inventory Count
+        %span.text-muted by Category
+      .col-xs-6.col-sm-4.placeholder
+        %img(src="http://placehold.it/140x100")
+        %h4 Inventory Value
+        %span.text-muted $250 per item
+      .col-xs-12.col-sm-4.placeholder
+        %img(src="http://placehold.it/140x100")
+        %h4 Wishlist Count
+    %h2.sub-header Top 10 Inventory Items
     .table-responsive
-      %table.table.table-striped
+      %table.table.table-striped.dashboard
         %thead
           %tr
             %th #
-            %th Header1
-            %th Header2
-            %th Header3
-            %th Header4
+            %th Item
+            %th Age
+            %th Condition
+            %th Value
+            %th
         %tbody
+          - (1..10).each do |i|
+            %tr
+              %td= i
+              %td
+                =link_to "#", title: "Item #{i}" do
+                  ="Item #{i}"
+              %td= "#{(1..15).to_a.sample} years"
+              %td
+                =select_tag "inventory_item[#{i}][condition]", options_for_select(["Excellent", "Good", "Poor", "Trash"].map.with_index {|x,y| [x, y + 1]}, (1..4).to_a.sample), include_blank: true
+              %td= "$#{(1..1000).to_a.sample}"
+              %td
+                =link_to "#", title: "Refresh" do
+                  %span.glyphicon.glyphicon-refresh(aria-hidden="true")
+    %h2.sub-header Wish List
+    .table-responsive
+      %table.table.table-striped.dashboard
+        %thead
           %tr
-            %td 1
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
-          %tr
-            %td 2
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
-          %tr
-            %td 1
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
-          %tr
-            %td 2
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
-          %tr
-            %td 1
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
-          %tr
-            %td 2
-            %td First Thing
-            %td Second Thing
-            %td Third Thing
-            %td Fourth Thing
+            %th #
+            %th Item
+            %th Need Level
+            %th Cost
+            %th
+        %tbody
+          - (1..5).each do |i|
+            %tr
+              %td= i
+              %td
+                =link_to "#", title: "Item #{i}" do
+                  ="Item #{i}"
+              %td
+                =select_tag "inventory_item[#{i}][condition]", options_for_select(["Must Have", "Near Future", "Eventually", "In My Dreams"].map.with_index {|x,y| [x, y + 1]}, (1..4).to_a.sample), include_blank: true
+              %td= "$#{(1..1000).to_a.sample}"
+              %td
+                =link_to "#", title: "Remove" do
+                  %span.glyphicon.glyphicon-remove(aria-hidden="true")

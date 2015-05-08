@@ -1,0 +1,17 @@
+%ul.nav.nav-sidebar
+  %li.active
+    <a href="#">Overview <span class="sr-only">(current)</span></a>
+  %li.dropdown
+    =link_to "#", id: "category_dropdown", class: "dropdown-toggle", data: {toggle: "dropdown"}, html_options: {"aria-expanded"=>'false', "aria-haspopup"=>'true'} do
+      Categories
+      %span.caret
+    %ul#wishlistmenu.dropdown-menu(role="menu" aria-labeledby="category_dropdown")
+      %li Kitchen
+      %li Electronics
+  %li.dropdown
+    =link_to "#", id: "wishlist_dropdown", class: "dropdown-toggle", data: {toggle: "dropdown"}, html_options: {"aria-expanded"=>'false', "aria-haspopup"=>'true'} do
+      Wish List
+      %span.caret
+    %ul#wishlistmenu.dropdown-menu(role="menu" aria-labeledby="wishlist_dropdown")
+      %li Something
+      %li Else
